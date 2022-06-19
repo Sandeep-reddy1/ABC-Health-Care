@@ -1,0 +1,33 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+    <div class="container">
+      
+        <a class="navbar-brand" routerLink="/"><i class="fa-solid fa-heart-pulse"></i> ABC HealthCare</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
+          <ul class="navbar-nav ">
+           
+            <li class="nav-item">
+                <a class="nav-link" routerLinkActive="active" aria-current="page" routerLink="/welcome">Welcome Admin!</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLinkActive="active" aria-current="page" routerLink="/admin/products">Manage Products</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link"  routerLinkActive="active" routerLink="/admin/categories" aria-current="page">Manage Categories</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link"  routerLinkActive="active" routerLink="/admin/users" aria-current="page">UserList</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLinkActive="active" routerLink="/login" (click)="logout()"><i class="fa-solid fa-right-from-bracket"></i>Logout</a>
+              </li>
+           
+          </ul>
+          
+        </div>
+      </div>
+  
+   
+    </nav>

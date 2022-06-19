@@ -1,0 +1,63 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <h1>Check Out</h1>
+<br><br><br>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+<form #f="ngForm" (ngSubmit)="addOrder(f)">
+    <textarea rows="5" ngModel #address="ngModel" name="address" type="text" class="form-control" placeholder="Shipping Address" required></textarea><br>
+    <div class="alert alert-danger" *ngIf="address.touched && address.invalid">Address is required!</div>
+
+    <input ngModel #phoneNumber="ngModel" name="phoneNumber" type="text" class="form-control" placeholder="Phone Number" minlength="10" maxlength="10" required><br>
+    <div class="alert alert-danger" *ngIf="phoneNumber.touched && phoneNumber.invalid">PhoneNumber is required!</div>
+    <button class="btn btn-primary" [disabled]="f.invalid" *ngIf="filterCheckout.length">Place Order</button>
+    
+</form>
+
+<br>
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-7">
+            <div class="card">
+        
+           
+                <div class="card-body">
+                    <h5 class="card-title text-success">Order Summary</h5>
+                    <p class="card-text">You have {{filterCheckout.length}} items in your shopping cart</p>
+                    <ul class="list-group">
+                        <li  class="list-group-item"  *ngFor="let item of filterCheckout;index as i">
+                            <div class="row">
+                                <div class="col-md-6" >
+                                  {{item.cartProductQuantity}} x {{item.cartProductName}}
+                                </div>
+                                <div class="col-md-6">
+                                  {{((item.cartProductQuantity || 0)*(item.cartProductPrice || 0))|currency}}
+                                </div>
+                            </div>
+                        
+                  </li>
+                  <li class="list-group-item">
+                      <div class="row">
+                          <div class="col-md-6">
+                            <b> Total</b>
+                          </div>
+                          <div class="col-md-6">
+                             <b> {{getTotalPrice()|currency}}</b>
+                          </div>
+                      </div>
+                      
+                  </li>
+          
+                    </ul>
+                  </div>
+                </div>
+            </div>
+        </div>
+    
+
+      <br>
+      <br>
+      
+</div>
+</div>

@@ -1,0 +1,86 @@
+<app-navbar></app-navbar>
+<!--<div class="container">
+    <h1>Order Details</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Product</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Total</th>
+            <th>Ordered On</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let product of filterOrderArray; index as i">
+            
+            <td>{{ product.orderProductName }}</td>
+            <td>{{ product.orderProductPrice |currency}}</td>-->
+            <!--<td>{{product.amount}}</td>-->
+            <!--<td>
+               {{product.orderProductQuantity}}
+            </td>
+           
+            <td>{{(product.orderProductPrice || 0)*(product.orderProductQuantity || 0) | currency}}</td>
+            <td>{{product.orderProductDateTime}}</td>
+            
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>-->
+            <!--<td>{{getTotalPrice()}}</td>-->
+        <!--<td></td>
+        <td></td>
+        </tr>
+    </tfoot>
+</table>
+
+</div>-->
+
+    
+     <div  *ngIf="filterOrderArray.length===0" class="container">
+            <div class="card">
+                <h5 class="card-title">My Orders</h5>
+    
+            </div>
+            <div class="center">
+                <img src="https://i.pinimg.com/736x/8a/e5/2c/8ae52c3304f4ab335e3b8398ec15ae63.jpg" alt="sompic">
+                <h4>No active orders</h4>
+                <a routerLink="/home">Shop now</a>
+            </div>
+        </div> 
+    
+   
+            <div  *ngIf="filterOrderArray.length!==0">
+                <div class="container">
+                <div  *ngFor="let product of filterOrderArray; index as i" class="card" style="max-height: 30rem;">
+                   
+                        <div class="row">
+                            <div class="col-md-3">
+                                <img [src]="product.orderProductImage"  style="width:100%;height:200px;">
+                            </div>
+                            <div class="col-md-9">
+                                <h5 class="card-header">{{product.orderProductName}}</h5>
+                                <div class="card-body">
+                                    <p class="card-title"><b>Price:</b><span class="text-success">{{product.orderProductPrice | currency}}</span></p>
+                                    <p class="card-title"><b>Quantity:</b><span class="text-success">{{product.orderProductQuantity}}</span></p>
+                                    <p class="card-title"><b>Ordered On:</b><span class="text-success">{{product.orderProductDateTime}}</span></p>
+                                    
+                                    <a [routerLink]="['/product-details',product.orderProductId]" class="btn btn-primary">Details</a>
+                                </div>
+                            </div>
+        
+        
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+           
+    
+    
+    
+    

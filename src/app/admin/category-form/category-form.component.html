@@ -1,0 +1,20 @@
+<app-admin-navbar></app-admin-navbar>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <form #f="ngForm" (ngSubmit)="addNewCategory(f)">
+                <div class="form-group">
+                    <label for="categoryName">Category Name</label>
+                    <input #categoryName="ngModel" [(ngModel)]="category.categoryName" name="categoryName" id="categoryName" type="text" class="form-control" required/>
+                    <div class="alert alert-danger" *ngIf="categoryName.touched && categoryName.invalid">
+                        Category Name is required
+                    </div>
+                </div><br>
+                <button class="btn btn-primary" [disabled]="f.invalid">Save</button>
+            </form> 
+        </div>
+        
+        
+    </div>
+    
+</div>

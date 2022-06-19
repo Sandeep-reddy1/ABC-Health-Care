@@ -1,0 +1,60 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <h1>Shopping Cart</h1>
+<ng-container>
+    <p>You have {{filterByEmailCart.length}} items in your shopping cart</p>
+</ng-container>
+<div  *ngIf="filterByEmailCart.length===0" class="container">
+    <div class="card card-style">
+        <h5 class="card-title">Cart</h5>
+
+    </div>
+    <div class="center">
+        <br><br>
+        <img class="img-style" src="https://i.pinimg.com/736x/8a/e5/2c/8ae52c3304f4ab335e3b8398ec15ae63.jpg" alt="sompic">
+        <h4>Your Cart is Empty</h4>
+        <a routerLink="/home">Shop now</a>
+    </div>
+</div> 
+<table *ngIf="+getTotalItems()!=0" class="table">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Product</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let product of filterByEmailCart; index as i">
+            <td><div [style.backgroundImage]="'url('+product.cartProductImage+')'" class="thumbnail"></div></td>
+            <td>{{ product.cartProductName }}</td>
+            <td>{{ product.cartProductPrice |currency}}</td>
+            <!--<td>{{product.amount}}</td>-->
+            <td>
+                <input #amount=ngModel ngModel type="number" class="form-control" [(ngModel)]="product.cartProductQuantity"  style="width:150px" required [min]="0.001">
+                <div class="alert alert-danger" *ngIf="amount.touched && amount.invalid" style="padding:0px;width: 150px;">
+                    <div *ngIf="amount.errors?.['required']" >Quantity is required</div>
+                    <div *ngIf="amount.errors?.['min']">Invalid</div>
+                </div>
+            </td>
+           
+            <td><button *ngIf="amount.touched" class="btn btn-warning" style="color:white;" (click)="save(i)"><i class="fa-solid fa-pen-to-square "></i>Update</button></td>
+            <td><button class="btn" (click)="delete(i)"><i class="fa fa-trash text-danger" aria-hidden="true"></i></button></td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <!--<td>{{getTotalPrice()}}</td>-->
+        <td></td>
+        <td></td>
+        </tr>
+    </tfoot>
+</table>
+<a *ngIf="filterByEmailCart.length" routerLink="/check-out" class="btn btn-primary" >Check out</a>
+</div>

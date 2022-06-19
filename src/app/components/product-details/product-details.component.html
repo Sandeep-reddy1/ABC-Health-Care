@@ -1,0 +1,36 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <img class="img-fluid d-block w-100" [src]="productDetails.productImage" width="100" height="100"/>
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-7">
+            <br>
+            <br>
+            <br>
+            <h3>{{productDetails.productName}}</h3>
+            <br />
+            <div class="row">
+                <div class="col-md-8">
+                    <p><b>Price:</b><span class="text-danger"> {{productDetails.productPrice | currency}}</span></p>
+                    <p><b>Category:</b><span > {{productDetails.productCategory}}</span></p>
+                    <p><b>Seller:</b><span> {{productDetails.productSeller}}</span></p>
+                    <p><b>Description:</b><span > {{productDetails.productDescription}}</span></p>
+                    <br>
+                    <button  class="btn btn-block btn-success"(click)="setQuantity(productDetails.id)" *ngIf="add !== productDetails.id">Add To Cart</button>
+                    <div *ngIf="add === productDetails.id">
+                        <input type="number" class="form-control" name="qte" placeholder="Enter Quantity" #quantity><br>
+                        <button class="btn btn-primary" (click)="addToCart(quantity.value)">Add</button>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                  
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+    <br />

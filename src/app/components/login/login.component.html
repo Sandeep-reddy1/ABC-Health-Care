@@ -1,0 +1,68 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+    <div class="container">
+      <a class="navbar-brand" routerLink="/"><i class="fa-solid fa-heart-pulse"></i> ABC HealthCare</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
+        <ul class="navbar-nav ">
+            <li  class="nav-item">
+                <a class="nav-link" routerLinkActive="active" aria-current="page" routerLink="/home"><i class="fa fa-home" aria-hidden="true"></i>Home</a>
+              </li>
+          <li  class="nav-item">
+            <a class="nav-link" routerLinkActive="active" aria-current="page" routerLink="/login">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" aria-current="page" routerLink="/signup">Signup</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" aria-current="page" routerLink="/admin/admin-login">Admin Login</a>
+          </li>
+
+        <!--<li ngbDropdown *ngIf="isUserLogin" class="nav-item dropdown">
+             <a ngbDropdownToggle class="nav-link dropdown-toggle"  id="dropdown01" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{username}}</a>
+             <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown01">
+                 <a ngbDropdownItem class="dropdown-item" routerLink="/new-post">New Post</a>
+                 <a ngbDropdownItem class="dropdown-item" (click)="logout()">Logout</a>
+
+             </div>
+         </li>-->
+        </ul>
+        
+      </div>
+    </div>
+  </nav>
+<div class="container bgcolor">
+  <br>
+<h2 class="login text-center">Sign In</h2>
+<br>
+<form #f="ngForm" class="text-center" (ngSubmit)="onLogin(f)">
+  <div class="row d-flex justify-content-center" >
+    <input ngModel #email="ngModel"  name="email" type="email" class="form-control" placeholder="Email" required email style="width:300px">
+    <div class="row  d-flex justify-content-center">
+    <div class="alert alert-danger" *ngIf="email.touched && email.errors?.['required']" style="width:300px">Email is required!</div>
+    <div class="alert alert-danger" *ngIf="email.touched && email.errors?.['email']" style="width:300px">Your input doesn't match email format!</div>
+    </div>
+   
+  </div>
+  <br>
+  <br>
+  <div class="row d-flex justify-content-center">
+    <input ngModel #pass="ngModel" name="password" type="password" class="form-control" placeholder="Password" required minlength="4" style="width:300px">
+
+    <div class="row  d-flex justify-content-center">
+    <div class="alert alert-danger" *ngIf="pass.touched && pass.errors?.['required']" style="width:300px">Password is required!</div>
+    <div class="alert alert-danger" *ngIf="pass.touched && pass.errors?.['minlength']" style="width:300px">Please, enter atleast 4 character!</div>
+  </div>
+ 
+  </div>
+  <br>
+  <br>
+  
+   
+    <button class="btn btn-primary" [disabled]="email.invalid || pass.invalid" style="width:200px;" id="Login">Login</button>
+</form>
+<br>
+<br>
+
+</div>

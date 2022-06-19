@@ -1,0 +1,25 @@
+<app-admin-navbar></app-admin-navbar>
+
+<div class="container">
+    <br>
+    <h1>Users List</h1>
+    <br>
+    <table class="table table-striped table-bordered">
+        <thead>
+            <th>Id</th>
+            <th>FirstName</th>
+            <th>LastName</th>
+            <th>Email</th>
+            
+        </thead>
+        <tbody>
+            <tr *ngFor="let p of Users;index as i">
+                <td>{{p.id}}</td>
+                <td>{{p.firstName}}</td>
+                <td>{{p.lastName}}</td>
+                <td>{{p.email}}</td>
+               
+            </tr>
+        </tbody>
+    </table>
+</div>
